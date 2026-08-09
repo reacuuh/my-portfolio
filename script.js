@@ -144,10 +144,17 @@
 
     box.textContent = '';
 
+    // maxresdefault is 16:9 and matches the slot; it doesn't exist for every
+    // upload, so fall back to hqdefault (4:3, cropped by object-fit).
+    // No loading="lazy" here: the panel starts collapsed at height 0, so a lazy
+    // image never intersects the viewport and the fetch is deferred forever.
     var thumb = new Image();
-    thumb.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
     thumb.alt = '';
-    thumb.loading = 'lazy';
+    thumb.addEventListener('error', function onError() {
+      thumb.removeEventListener('error', onError);
+      thumb.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    });
+    thumb.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
 
     var play = document.createElement('button');
     play.type = 'button';
