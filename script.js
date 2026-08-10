@@ -136,44 +136,106 @@
   });
 
   /* ── youtube slots ────────────────────────────────────────────
-     Set data-yt="VIDEO_ID" on a .work__video to fill it. Empty slots
-     keep their placeholder. Nothing loads from YouTube until clicked.  */
-  document.querySelectorAll('.work__video').forEach(function (box) {
-    var id = (box.dataset.yt || '').trim();
-    if (!id) return;
+     data-yt="VIDEO_ID" fills one slot. For several clips on the same
+     entry, comma-separate them: data-yt="ID1, ID2, ID3". The first is
+     the main player, the rest become a thumbnail strip underneath.
+     Empty slots keep their placeholder, and nothing is requested from
+     YouTube until the visitor clicks play.                             */
 
-    box.textContent = '';
-
-    // maxresdefault is 16:9 and matches the slot; it doesn't exist for every
-    // upload, so fall back to hqdefault (4:3, cropped by object-fit).
-    // No loading="lazy" here: the panel starts collapsed at height 0, so a lazy
-    // image never intersects the viewport and the fetch is deferred forever.
-    var thumb = new Image();
-    thumb.alt = '';
-    thumb.addEventListener('error', function onError() {
-      thumb.removeEventListener('error', onError);
-      thumb.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+  // maxresdefault is 16:9 and matches the slot; it doesn't exist for every
+  // upload, so fall back to hqdefault (4:3, cropped by object-fit).
+  // No loading="lazy": the panel starts collapsed at height 0, so a lazy
+  // image never intersects the viewport and the fetch is deferred forever.
+  function thumbFor(id, small) {
+    var img = new Image();
+    img.alt = '';
+    img.addEventListener('error', function onError() {
+      img.removeEventListener('error', onError);
+      img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
     });
-    thumb.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+    img.src = 'https://i.ytimg.com/vi/' + id + (small ? '/mqdefault.jpg' : '/maxresdefault.jpg');
+    return img;
+  }
 
-    var play = document.createElement('button');
-    play.type = 'button';
-    play.className = 'work__play';
-    play.setAttribute('aria-label', 'Play project video');
+  document.querySelectorAll('.work__video').forEach(function (box) {
+    var ids = (box.dataset.yt || '').split(',').map(function (s) {
+      return s.trim();
+    }).filter(Boolean);
 
-    box.appendChild(thumb);
-    box.appendChild(play);
+    if (!ids.length) return;
 
-    play.addEventListener('click', function () {
+    var strip = null;
+    var active = 0;
+
+    function playing() {
+      return !!box.querySelector('.work__iframe');
+    }
+
+    function markStrip() {
+      if (!strip) return;
+      Array.prototype.forEach.call(strip.children, function (btn, i) {
+        btn.setAttribute('aria-current', i === active ? 'true' : 'false');
+      });
+    }
+
+    function showPoster(i) {
+      active = i;
+      box.textContent = '';
+
+      var play = document.createElement('button');
+      play.type = 'button';
+      play.className = 'work__play';
+      play.setAttribute('aria-label', ids.length > 1
+        ? 'Play clip ' + (i + 1) + ' of ' + ids.length
+        : 'Play project video');
+      play.addEventListener('click', function () { showPlayer(i); });
+
+      box.appendChild(thumbFor(ids[i], false));
+      box.appendChild(play);
+      markStrip();
+    }
+
+    function showPlayer(i) {
+      active = i;
       var frame = document.createElement('iframe');
       frame.className = 'work__iframe';
-      frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + ids[i] + '?autoplay=1&rel=0';
       frame.title = 'Project video';
       frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       frame.allowFullscreen = true;
       box.textContent = '';
       box.appendChild(frame);
+      markStrip();
+    }
+
+    showPoster(0);
+    if (ids.length < 2) return;
+
+    strip = document.createElement('div');
+    strip.className = 'work__reel';
+    strip.setAttribute('role', 'group');
+    strip.setAttribute('aria-label', 'Clips for this project');
+
+    ids.forEach(function (id, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'work__reelBtn';
+      btn.setAttribute('aria-label', 'Clip ' + (i + 1) + ' of ' + ids.length);
+      btn.appendChild(thumbFor(id, true));
+
+      // Switching while something is already playing keeps playing.
+      // Otherwise it only changes the poster, so audio never starts
+      // on its own.
+      btn.addEventListener('click', function () {
+        if (playing() || i === active) showPlayer(i);
+        else showPoster(i);
+      });
+
+      strip.appendChild(btn);
     });
+
+    box.insertAdjacentElement('afterend', strip);
+    markStrip();
   });
 
   /* ── copy to clipboard ────────────────────────────────────── */
