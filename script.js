@@ -1,244 +1,112 @@
-/* ============================================================
-   Monochrome portfolio — interactions
-   No dependencies. Everything degrades gracefully without JS.
-   ============================================================ */
-
 (function () {
   'use strict';
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
 
-  /* ── current year ─────────────────────────────────────────── */
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ── scroll progress bar + sticky nav backdrop ────────────── */
-  var bar = document.querySelector('.progress i');
-  var nav = document.querySelector('.nav');
-  var ticking = false;
+  /* ── reveal on scroll ─────────────────────────────────────────
+     Blocks marked .reveal fade up the first time they scroll into
+     view. Anything already on screen when this runs is left alone,
+     so nothing visible blinks out and back, and if the script never
+     runs the page is simply static.                                 */
 
-  function onScroll() {
-    if (bar) {
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-      bar.style.width = pct.toFixed(2) + '%';
-    }
-    if (nav) nav.classList.toggle('is-stuck', window.scrollY > 40);
-    ticking = false;
-  }
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  window.addEventListener('scroll', function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
-  }, { passive: true });
-  onScroll();
-
-  /* ── reveal on scroll ─────────────────────────────────────── */
-  var revealables = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window) || reduced) {
-    revealables.forEach(function (el) { el.classList.add('is-in'); });
-  } else {
-    var revealObserver = new IntersectionObserver(function (entries) {
+  if (!reduced && 'IntersectionObserver' in window) {
+    var revealer = new IntersectionObserver(function (entries) {
+      var shown = 0;
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        revealObserver.unobserve(entry.target);
+        // Blocks that arrive together, like a row of two, come in one after the other.
+        entry.target.style.setProperty('--d', Math.min(shown, 3) * 90 + 'ms');
+        entry.target.classList.remove('is-pending');
+        revealer.unobserve(entry.target);
+        shown++;
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+    }, { rootMargin: '0px 0px -8% 0px' });
 
-    revealables.forEach(function (el) { revealObserver.observe(el); });
-  }
-
-  /* ── count-up stats ───────────────────────────────────────── */
-  var counters = document.querySelectorAll('[data-count]');
-
-  function format(el, value) {
-    var dec = parseInt(el.dataset.dec || '0', 10);
-    return (el.dataset.prefix || '') + value.toFixed(dec) + (el.dataset.suffix || '');
-  }
-
-  function countUp(el) {
-    var target = parseFloat(el.dataset.count);
-    if (isNaN(target)) return;
-    if (reduced) { el.textContent = format(el, target); return; }
-
-    var duration = 1400;
-    var start = null;
-
-    function step(now) {
-      if (start === null) start = now;
-      var t = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-      el.textContent = format(el, target * eased);
-      if (t < 1) requestAnimationFrame(step);
-      else el.textContent = format(el, target);
-    }
-    requestAnimationFrame(step);
-  }
-
-  if (!('IntersectionObserver' in window)) {
-    counters.forEach(function (el) { el.textContent = format(el, parseFloat(el.dataset.count)); });
-  } else {
-    var countObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        countUp(entry.target);
-        countObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { countObserver.observe(el); });
-  }
-
-  /* ── work accordion (one open at a time) ──────────────────── */
-  var rows = Array.prototype.slice.call(document.querySelectorAll('.work__row'));
-
-  function close(row) {
-    var panel = document.getElementById(row.getAttribute('aria-controls'));
-    if (!panel) return;
-    panel.style.height = panel.scrollHeight + 'px';
-    requestAnimationFrame(function () { panel.style.height = '0px'; });
-    row.setAttribute('aria-expanded', 'false');
-  }
-
-  function open(row) {
-    var panel = document.getElementById(row.getAttribute('aria-controls'));
-    if (!panel) return;
-    panel.style.height = panel.scrollHeight + 'px';
-    row.setAttribute('aria-expanded', 'true');
-    // Let it settle to auto so the panel reflows correctly on resize.
-    panel.addEventListener('transitionend', function once(e) {
-      if (e.propertyName !== 'height') return;
-      panel.removeEventListener('transitionend', once);
-      if (row.getAttribute('aria-expanded') === 'true') panel.style.height = 'auto';
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.classList.add('is-pending');
+      revealer.observe(el);
     });
   }
 
-  rows.forEach(function (row) {
-    row.addEventListener('click', function () {
-      var isOpen = row.getAttribute('aria-expanded') === 'true';
-      rows.forEach(function (other) {
-        if (other.getAttribute('aria-expanded') === 'true') close(other);
-      });
-      if (!isOpen) open(row);
-    });
+  // Posters fade in as they finish downloading instead of popping in.
+  // The frame's background stands in until then.
+  document.querySelectorAll('.media > img, .shot img').forEach(function (img) {
+    if (img.complete) return;
+    img.classList.add('is-loading');
+    var done = function () { img.classList.remove('is-loading'); };
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
   });
 
-  // Keep an open panel correctly sized when the layout reflows.
-  var resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      rows.forEach(function (row) {
-        if (row.getAttribute('aria-expanded') !== 'true') return;
-        var panel = document.getElementById(row.getAttribute('aria-controls'));
-        if (panel) panel.style.height = 'auto';
-      });
-    }, 150);
-  });
+  /* ── youtube: click to load ───────────────────────────────────
+     The poster and the play link are plain HTML, so without JS the
+     link just opens the video on YouTube. With JS, the click swaps the
+     poster for an embed, and nothing is requested from YouTube before
+     that click.                                                     */
 
-  /* ── youtube slots ────────────────────────────────────────────
-     data-yt="VIDEO_ID" fills one slot. For several clips on the same
-     entry, comma-separate them: data-yt="ID1, ID2, ID3". The first is
-     the main player, the rest become a thumbnail strip underneath.
-     Empty slots keep their placeholder, and nothing is requested from
-     YouTube until the visitor clicks play.                             */
+  document.querySelectorAll('.media[data-yt]').forEach(function (box) {
+    var id = box.dataset.yt;
+    var play = box.querySelector('.media__play');
+    if (!id || !play) return;
 
-  // maxresdefault is 16:9 and matches the slot; it doesn't exist for every
-  // upload, so fall back to hqdefault (4:3, cropped by object-fit).
-  // No loading="lazy": the panel starts collapsed at height 0, so a lazy
-  // image never intersects the viewport and the fetch is deferred forever.
-  function thumbFor(id, small) {
-    var img = new Image();
-    img.alt = '';
-    img.addEventListener('error', function onError() {
-      img.removeEventListener('error', onError);
-      img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
-    });
-    img.src = 'https://i.ytimg.com/vi/' + id + (small ? '/mqdefault.jpg' : '/maxresdefault.jpg');
-    return img;
-  }
+    var title = box.dataset.title || 'Project video';
+    var length = play.querySelector('span');
+    play.setAttribute('aria-label', 'Play video: ' + title + (length ? ' (' + length.textContent + ')' : ''));
 
-  document.querySelectorAll('.work__video').forEach(function (box) {
-    var ids = (box.dataset.yt || '').split(',').map(function (s) {
-      return s.trim();
-    }).filter(Boolean);
+    play.addEventListener('click', function (e) {
+      // Let modified clicks open YouTube in a new tab as usual.
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
 
-    if (!ids.length) return;
-
-    var strip = null;
-    var active = 0;
-
-    function playing() {
-      return !!box.querySelector('.work__iframe');
-    }
-
-    function markStrip() {
-      if (!strip) return;
-      Array.prototype.forEach.call(strip.children, function (btn, i) {
-        btn.setAttribute('aria-current', i === active ? 'true' : 'false');
-      });
-    }
-
-    function showPoster(i) {
-      active = i;
-      box.textContent = '';
-
-      var play = document.createElement('button');
-      play.type = 'button';
-      play.className = 'work__play';
-      play.setAttribute('aria-label', ids.length > 1
-        ? 'Play clip ' + (i + 1) + ' of ' + ids.length
-        : 'Play project video');
-      play.addEventListener('click', function () { showPlayer(i); });
-
-      box.appendChild(thumbFor(ids[i], false));
-      box.appendChild(play);
-      markStrip();
-    }
-
-    function showPlayer(i) {
-      active = i;
       var frame = document.createElement('iframe');
-      frame.className = 'work__iframe';
-      frame.src = 'https://www.youtube-nocookie.com/embed/' + ids[i] + '?autoplay=1&rel=0';
-      frame.title = 'Project video';
-      frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0';
+      frame.title = title;
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       frame.allowFullscreen = true;
+
       box.textContent = '';
       box.appendChild(frame);
-      markStrip();
-    }
-
-    showPoster(0);
-    if (ids.length < 2) return;
-
-    strip = document.createElement('div');
-    strip.className = 'work__reel';
-    strip.setAttribute('role', 'group');
-    strip.setAttribute('aria-label', 'Clips for this project');
-
-    ids.forEach(function (id, i) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'work__reelBtn';
-      btn.setAttribute('aria-label', 'Clip ' + (i + 1) + ' of ' + ids.length);
-      btn.appendChild(thumbFor(id, true));
-
-      // Switching while something is already playing keeps playing.
-      // Otherwise it only changes the poster, so audio never starts
-      // on its own.
-      btn.addEventListener('click', function () {
-        if (playing() || i === active) showPlayer(i);
-        else showPoster(i);
-      });
-
-      strip.appendChild(btn);
+      frame.focus();
     });
-
-    box.insertAdjacentElement('afterend', strip);
-    markStrip();
   });
 
+  /* ── screenshots: lightbox ───────────────────────────────────── */
+
+  var viewer = document.querySelector('.lightbox');
+  if (viewer && typeof viewer.showModal === 'function') {
+    var viewerImg = document.createElement('img');
+    var viewerCap = viewer.querySelector('.lightbox__cap');
+    viewer.insertBefore(viewerImg, viewerCap);
+
+    document.querySelectorAll('a.shot').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+
+        var img = link.querySelector('img');
+        var caption = link.closest('figure') && link.closest('figure').querySelector('figcaption');
+        viewerImg.src = link.href;
+        viewerImg.alt = img ? img.alt : '';
+        viewerCap.textContent = caption ? caption.textContent : '';
+        viewerCap.hidden = !caption;
+        viewer.showModal();
+      });
+    });
+
+    // A click on the backdrop lands on the dialog element itself.
+    viewer.addEventListener('click', function (e) {
+      if (e.target === viewer) viewer.close();
+    });
+  }
+
   /* ── copy to clipboard ────────────────────────────────────── */
+
   var toast = document.querySelector('.toast');
   var toastTimer;
 
@@ -267,7 +135,7 @@
   document.querySelectorAll('[data-copy]').forEach(function (el) {
     el.addEventListener('click', function () {
       var text = el.dataset.copy;
-      var done = function () { say('Copied — ' + text); };
+      var done = function () { say('Copied ' + text); };
       var fallback = function () { legacyCopy(text) ? done() : say('Copy failed'); };
 
       if (navigator.clipboard && window.isSecureContext) {

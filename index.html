@@ -3,467 +3,541 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REALS — Roblox backend programmer</title>
-<meta name="description" content="Roblox scripter and backend programmer. Anti-cheats, economies, inventory and placement systems, admin panels, and Roblox–Discord integrations. Lead programmer on AFK for free UGC.">
-<meta name="theme-color" content="#000000">
+<title>Reals — Roblox developer, server side</title>
+<meta name="description" content="Roblox developer working on the server side: player data, anti-cheat, admin tools and Discord bots that talk to live games. Lead programmer on AFK for FREE UGC.">
+<link rel="canonical" href="https://www.reals.work/">
+<meta name="theme-color" content="#0b0b0b">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.reals.work/">
+<meta property="og:site_name" content="Reals">
+<meta property="og:title" content="Reals — Roblox developer, server side">
+<meta property="og:description" content="Player data, anti-cheat, admin tools and Discord bots that talk to live games. Lead programmer on AFK for FREE UGC.">
+<meta property="og:image" content="https://www.reals.work/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Reals. I build the server side of Roblox games.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=JetBrains+Mono&display=swap">
+<!-- Orbitron is only used for the five letters of the wordmark, so request just those glyphs. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&text=REALS&display=swap">
 
 <link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Reals",
+  "url": "https://www.reals.work/",
+  "jobTitle": "Roblox developer",
+  "email": "mailto:farouqadebayo62@gmail.com",
+  "knowsAbout": ["Roblox", "Luau", "TypeScript", "Node.js", "Discord bots"],
+  "sameAs": [
+    "https://github.com/reacuuh",
+    "https://www.youtube.com/@realswordrod",
+    "https://www.roblox.com/users/1269462849/profile"
+  ]
+}
+</script>
 </head>
 <body>
-
-<div class="rules" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-<div class="grain" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"><i></i></div>
 
 <a class="skip" href="#work">Skip to work</a>
 
 <header class="nav">
-  <a class="nav__mark" href="#top"><span class="nav__sq"></span>REALS</a>
-  <nav class="nav__links" aria-label="Sections">
-    <a href="#work">01 Work</a>
-    <a href="#build">02 Build</a>
-    <a href="#notes">03 Notes</a>
-  </nav>
-  <a class="nav__status" href="#contact">Get in touch <span aria-hidden="true">→</span></a>
+  <div class="nav__in">
+    <a class="mark" href="#top" aria-label="Reals, back to top"><span class="mark__sq" aria-hidden="true"></span>REALS</a>
+    <nav aria-label="Sections">
+      <ul class="nav__links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav__cta" href="#contact">Get in touch <span aria-hidden="true">→</span></a>
+  </div>
 </header>
 
-<main>
+<main id="top">
 
-  <!-- ─────────────────────────  HERO  ───────────────────────── -->
-  <section class="hero" id="top">
-    <div class="hero__inner">
-      <p class="eyebrow reveal">Roblox scripter <span class="sep">/</span> backend &amp; integrations</p>
+  <section class="hero doc" aria-labelledby="hero-title">
+    <div class="doc__side">
+      <p class="hero__who">Roblox developer<br><span>since 2020</span></p>
+      <p class="status"><span class="status__dot" aria-hidden="true"></span>Taking on work</p>
+    </div>
 
-      <h1 class="hero__title">
-        <span class="ln reveal" style="--d:.05s">BUILT</span>
-        <span class="ln reveal" style="--d:.12s">TO NOT</span>
-        <span class="ln reveal" style="--d:.19s">BREAK<span class="dot">.</span></span>
-      </h1>
-
-      <p class="hero__lede reveal" style="--d:.26s">
-        Anti&#8209;cheats, economies, inventory and placement systems — and the
-        Roblox&nbsp;↔&nbsp;Discord bridges that tie them together. Server&#8209;side is where I
-        live. Lead programmer on <em>AFK for free UGC</em>, head developer at bwush.
+    <div class="doc__main">
+      <h1 class="hero__title" id="hero-title">I build the server side of Roblox games.</h1>
+      <p class="hero__lede">
+        Player data, anti-cheat, admin tools, and Discord bots that can change things inside
+        a live server. Right now I'm lead programmer on <a href="#afk">AFK for FREE UGC</a>,
+        a bwush game that has passed a million visits.
       </p>
-
-      <div class="hero__cta reveal" style="--d:.33s">
-        <a class="btn btn--solid" href="#contact">Start a project <span aria-hidden="true">→</span></a>
-        <a class="btn" href="#work">See the work</a>
-      </div>
-    </div>
-
-    <div class="hero__meta">
-      <span>Scripting since 2020</span>
-      <span class="hero__scroll" aria-hidden="true">Scroll</span>
-      <span>v.01 / 2026</span>
-    </div>
-  </section>
-
-  <!-- ─────────────────────────  MARQUEE  ───────────────────────── -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span class="marquee__set">
-        <b>Luau</b><i>◼</i><b>TypeScript</b><i>◼</i><b>Node.js</b><i>◼</i><b>Rust</b><i>◼</i><b>Python</b><i>◼</i>
-        <b>Anti-cheat</b><i>◼</i><b>Roblox ↔ Discord</b><i>◼</i><b>Datastores</b><i>◼</i><b>Roblox APIs</b><i>◼</i>
-        <b>External databases</b><i>◼</i><b>Webhooks</b><i>◼</i><b>Admin panels</b><i>◼</i><b>Currency systems</b><i>◼</i>
-        <b>Server-authoritative everything</b><i>◼</i>
-      </span>
-      <span class="marquee__set">
-        <b>Luau</b><i>◼</i><b>TypeScript</b><i>◼</i><b>Node.js</b><i>◼</i><b>Rust</b><i>◼</i><b>Python</b><i>◼</i>
-        <b>Anti-cheat</b><i>◼</i><b>Roblox ↔ Discord</b><i>◼</i><b>Datastores</b><i>◼</i><b>Roblox APIs</b><i>◼</i>
-        <b>External databases</b><i>◼</i><b>Webhooks</b><i>◼</i><b>Admin panels</b><i>◼</i><b>Currency systems</b><i>◼</i>
-        <b>Server-authoritative everything</b><i>◼</i>
-      </span>
-    </div>
-  </div>
-
-  <!-- ─────────────────────────  STATS  ───────────────────────── -->
-  <section class="stats">
-    <p class="stats__line reveal">The things I've built have been through a lot of players at this point.</p>
-    <ul class="stats__grid">
-      <li class="stat reveal" style="--d:.00s"><span class="stat__n" data-count="1" data-suffix="M+">0</span><span class="stat__l">visits on AFK for free UGC</span></li>
-      <li class="stat reveal" style="--d:.06s"><span class="stat__n" data-count="6" data-suffix=" yrs">0</span><span class="stat__l">scripting Roblox, since 2020</span></li>
-      <li class="stat reveal" style="--d:.12s"><span class="stat__n" data-count="5" data-suffix="">0</span><span class="stat__l">languages I ship in, not just dabble</span></li>
-      <li class="stat reveal" style="--d:.18s"><span class="stat__n" data-prefix="&lt;" data-count="24" data-suffix="h">0</span><span class="stat__l">usual reply time on discord</span></li>
-    </ul>
-  </section>
-
-  <!-- ─────────────────────────  01 · WORK  ───────────────────────── -->
-  <section class="sec" id="work">
-    <header class="sec__head">
-      <span class="sec__num">01</span>
-      <h2 class="sec__title reveal">Selected<br>work<span class="dot">.</span></h2>
-      <p class="sec__note reveal" style="--d:.08s">
-        Shipped systems, not concepts. Most of this is running in live games right now —
-        there's more I can't show publicly, so just ask.
-      </p>
-    </header>
-
-    <ol class="work">
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w1">
-          <span class="work__idx">01</span>
-          <span class="work__name">AFK for Free UGC</span>
-          <span class="work__kind">Shipped game</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w1">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>A bwush game I'm the lead programmer on. Reward timers that survive rejoins, UGC distribution, anti-idle-abuse checks, and all the server logic underneath it.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Past 1M+ visits and still running. The backend holds up under full servers without the reward loop drifting or double-paying.</p>
-            </div>
-            <ul class="tags">
-              <li>Luau</li><li>Datastores</li><li>UGC</li><li>Lead programmer</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w2">
-          <span class="work__idx">02</span>
-          <span class="work__name">Server-Side Anti-Cheat</span>
-          <span class="work__kind">Security</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w2">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="yzv_yHcfEbU">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>Movement, speed and remote validation done on the server, where the client can't argue with it. Tuned so normal players with bad ping don't get punished for it.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Exploiters get caught by the thing they can't reach. Want to test it against something yourself? Ask me.</p>
-            </div>
-            <ul class="tags">
-              <li>Luau</li><li>Server-authoritative</li><li>Remote hardening</li><li>Detection</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w3">
-          <span class="work__idx">03</span>
-          <span class="work__name">Roblox ↔ Discord Bridge</span>
-          <span class="work__kind">Integrations</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w3">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="xjqw6GYNQL0">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>Two-way integration between a game and a Discord server. Node.js service in the middle talking to the Roblox APIs, verified account links, webhooks pushing in-game events out, and Discord commands reaching back into the game.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Staff can moderate, check data and trigger actions without opening Roblox. This is the part most people can't build, and it's the work I get asked for most.</p>
-            </div>
-            <ul class="tags">
-              <li>Node.js</li><li>TypeScript</li><li>Discord API</li><li>Roblox API</li><li>Webhooks</li><li>Account linking</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w4">
-          <span class="work__idx">04</span>
-          <span class="work__name">Custom Discord Bots</span>
-          <span class="work__kind">Bots</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w4">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="I0dr_fkfjWI, 0nAlCeLP-Zg">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>Bots built around what a server actually needs — slash commands, role automation, moderation tooling, tickets, and hooks into whatever backend or database sits behind them.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Not a reskinned template bot. Built for one server's rules, so it does the job properly instead of almost fitting.</p>
-            </div>
-            <ul class="tags">
-              <li>Node.js</li><li>TypeScript</li><li>Discord API</li><li>Slash commands</li><li>Databases</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w5">
-          <span class="work__idx">05</span>
-          <span class="work__name">Inventory &amp; Placement</span>
-          <span class="work__kind">Gameplay systems</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w5">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="FkIhaNuv-x8">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>Inventory backed by datastores, plus grid placement with collision and ownership checks. Every mutation is validated server-side before it's saved.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>No dupes, no items lost on a bad shutdown, no placing things where they shouldn't go. Drops into any sandbox or building game.</p>
-            </div>
-            <ul class="tags">
-              <li>Luau</li><li>Datastores</li><li>Grid placement</li><li>Collision</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w6">
-          <span class="work__idx">06</span>
-          <span class="work__name">Admin Panels</span>
-          <span class="work__kind">Tooling</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w6">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="WKvvy1F2Ns8">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>Admin panels with real permission tiers, where who can do what is data rather than a hardcoded list of user IDs. Every action is written to a log with who ran it.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Staff get exactly the powers they should have and nothing more, and anything that happens can be traced back to a person.</p>
-            </div>
-            <ul class="tags">
-              <li>Luau</li><li>Permissions</li><li>Audit log</li><li>UI</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w7">
-          <span class="work__idx">07</span>
-          <span class="work__name">Group Services</span>
-          <span class="work__kind">Automation</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w7">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="QWR_u-OB268">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>Custom automation for Roblox group member services — rank syncing, membership and payout handling, and the recurring jobs a large group otherwise does by hand.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Work that depended on someone remembering to do it now runs on its own, the same way every time.</p>
-            </div>
-            <ul class="tags">
-              <li>Node.js</li><li>Roblox API</li><li>Automation</li><li>Webhooks</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-
-      <li class="work__item reveal">
-        <button class="work__row" type="button" aria-expanded="false" aria-controls="w8">
-          <span class="work__idx">08</span>
-          <span class="work__name">Aircraft Hangar</span>
-          <span class="work__kind">Object animation</span>
-          <span class="work__plus" aria-hidden="true"></span>
-        </button>
-        <div class="work__panel" id="w8">
-          <div class="work__panelIn">
-            <div class="work__video" data-yt="MPqzKhsSRw4">
-              <span class="work__videoLabel">Video — coming soon</span>
-            </div>
-            <div class="work__col">
-              <h3>What it is</h3>
-              <p>A multi-part hangar sequence — doors, gantries and moving assemblies animated together, driven from the server so every client sees the same state at the same time.</p>
-            </div>
-            <div class="work__col">
-              <h3>The result</h3>
-              <p>Complex object animation that stays in sync for everyone in the server, and can be retimed or extended without rebuilding the rig.</p>
-            </div>
-            <ul class="tags">
-              <li>Luau</li><li>CFrame</li><li>Tweening</li><li>Replication</li>
-            </ul>
-          </div>
-        </div>
-      </li>
-    </ol>
-
-    <div class="cta-band reveal">
-      <p>Want one of these in your game?</p>
-      <a class="btn btn--solid" href="#contact">Get a quote <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-
-  <!-- ─────────────────────────  02 · BUILD  ───────────────────────── -->
-  <section class="sec" id="build">
-    <header class="sec__head">
-      <span class="sec__num">02</span>
-      <h2 class="sec__title reveal">What I<br>build<span class="dot">.</span></h2>
-      <p class="sec__note reveal" style="--d:.08s">One person doing all of it. Nothing gets lost in a handoff between a scripter and a backend dev, because they're the same person.</p>
-    </header>
-
-    <div class="cap">
-      <article class="cap__card reveal" style="--d:.00s">
-        <span class="cap__i">i.</span>
-        <h3>Anti-cheat &amp; security</h3>
-        <p>Server-side validation, exploit detection, remote hardening. Built so that normal players never notice it's there.</p>
-        <span class="cap__flag">Most requested</span>
-      </article>
-      <article class="cap__card reveal" style="--d:.06s">
-        <span class="cap__i">ii.</span>
-        <h3>Roblox ↔ Discord systems</h3>
-        <p>Verified account linking, webhook event feeds, Discord commands that reach into the game. Node.js and TypeScript against the Roblox APIs doing the work in between.</p>
-        <span class="cap__flag">Signature work</span>
-      </article>
-      <article class="cap__card reveal" style="--d:.12s">
-        <span class="cap__i">iii.</span>
-        <h3>Economy, inventory &amp; data</h3>
-        <p>Currency, shops, inventories, placement. Datastores where they fit, an external database where they don't — session-locked and validated so nothing duplicates and nothing disappears.</p>
-        <span class="cap__flag">Dupe-proof</span>
-      </article>
-      <article class="cap__card reveal" style="--d:.18s">
-        <span class="cap__i">iv.</span>
-        <h3>Tooling, bots &amp; rescues</h3>
-        <p>Admin panels, group automation, Discord and Telegram bots — and fixing other people's half-finished backends when it comes to that.</p>
-        <span class="cap__flag">Rescue missions</span>
-      </article>
-    </div>
-
-    <ol class="steps">
-      <li class="reveal" style="--d:.00s"><span class="steps__n">i.</span><h4>Tell me what you need</h4><p>Message me on Discord with your game and the problem. I usually reply the same day.</p></li>
-      <li class="reveal" style="--d:.08s"><span class="steps__n">ii.</span><h4>Scope &amp; price</h4><p>We agree what gets built, by when, and what it costs — before any code is written.</p></li>
-      <li class="reveal" style="--d:.16s"><span class="steps__n">iii.</span><h4>Build, test, hand off</h4><p>Tested code, a walkthrough of how it works, and I'm around if something comes up after.</p></li>
-    </ol>
-  </section>
-
-  <!-- ─────────────────────────  03 · NOTES  ───────────────────────── -->
-  <section class="sec" id="notes">
-    <header class="sec__head">
-      <span class="sec__num">03</span>
-      <h2 class="sec__title reveal">Field<br>notes<span class="dot">.</span></h2>
-    </header>
-
-    <div class="notes">
-      <div class="notes__body reveal">
-        <p class="notes__lead">I started scripting Roblox in 2020 because I wanted to know how games actually worked underneath.</p>
-        <p>Then I got stuck on the parts you can't see — the server, the datastore, the exact moment a rejoin lets someone duplicate an item. That's still the part I like most.</p>
-        <p>In 2023 I started building outside Roblox too: Discord and Telegram bots, Node.js services, external databases, webhooks, and anything the Roblox APIs will let me reach. That turned out to be the useful combination — most Roblox developers stop at the client, and most backend developers have never touched Luau. Sitting in both is why the integration work keeps coming to me.</p>
-        <p>These days I'm head developer at bwush and lead programmer on <em>AFK for free UGC</em>. I'd rather hand over something I'd put my name on than something delivered fast and quietly broken.</p>
-
-        <h3 class="notes__h">Stuff I'm good at</h3>
-        <ul class="chips">
-          <li>Luau</li><li>TypeScript</li><li>Node.js</li><li>Rust</li><li>Python</li>
-          <li>Anti-cheat</li><li>Server-authoritative everything</li><li>Datastores</li><li>Replication</li>
-          <li>Roblox APIs</li><li>External databases</li><li>Webhooks</li>
-          <li>Discord API</li><li>Telegram bots</li><li>REST APIs</li><li>Object animation</li>
-          <li>Admin panels</li><li>Currency systems</li><li>The unglamorous backend</li>
-        </ul>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#work">See the work <span aria-hidden="true">↓</span></a>
+        <a class="btn" href="#contact">Get in touch</a>
       </div>
 
-      <aside class="notes__side">
-        <div class="panel reveal" style="--d:.00s">
-          <span class="panel__k">Right now</span>
-          <p>Head developer at bwush, and lead programmer on <em>AFK for free UGC</em> — past a million visits and still being worked on.</p>
-          <p>Always happy to hear about new work, whatever stage it's at.</p>
-        </div>
-        <div class="panel reveal" style="--d:.08s">
-          <span class="panel__k">Outside Roblox</span>
-          <p>Discord and Telegram bots, Node.js services, external databases, and Rust when something needs to be genuinely fast. Been doing this side of it since 2023.</p>
-        </div>
-        <div class="panel reveal" style="--d:.16s">
-          <span class="panel__k">How I work</span>
-          <p>Scope first, then code. Everything gets tested before you see it and documented so you're not stuck if I'm asleep.</p>
-        </div>
-      </aside>
+      <dl class="spec hero__spec">
+        <div><dt>Now</dt><dd>Lead programmer, AFK for FREE UGC</dd></div>
+        <div><dt>Mostly</dt><dd>Luau, TypeScript, Node.js</dd></div>
+        <div><dt>Replies</dt><dd>Usually same day, on Discord</dd></div>
+      </dl>
     </div>
   </section>
 
-  <!-- ─────────────────────────  CONTACT  ───────────────────────── -->
-  <section class="contact" id="contact">
-    <h2 class="contact__title reveal">
-      <span class="ln">GOT A SYSTEM</span>
-      <span class="ln">THAT NEEDS</span>
-      <span class="ln">FIXING<span class="dot">?</span></span>
-    </h2>
+  <!--
+    Media, three ways. Every media block lives inside a <figure class="fig">.
 
-    <div class="contact__grid">
+    YouTube (click to load, nothing is requested from YouTube until then):
+      <div class="media" data-yt="VIDEO_ID" data-title="What the clip shows">
+        <img src="assets/media/x.webp" srcset="assets/media/x-640.webp 640w, assets/media/x.webp 1280w"
+             sizes="..." width="1280" height="720" loading="lazy" decoding="async" alt="...">
+        <a class="media__play" href="https://www.youtube.com/watch?v=VIDEO_ID">Play <span>0:17</span></a>
+      </div>
+
+    Self-hosted video (native controls, nothing downloads until play):
+      <div class="media">
+        <video controls preload="none" playsinline poster="assets/media/x.webp">
+          <source src="assets/media/x.webm" type="video/webm">
+          <source src="assets/media/x.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    Screenshots (each opens full size in a lightbox; works as a plain link without JS):
+      <div class="shots">
+        <a class="shot" href="assets/media/full.webp"><img src="assets/media/small.webp" alt="..." ...></a>
+      </div>
+
+    A project with no media just leaves the figure out.
+  -->
+
+  <section class="doc sec" id="work" aria-labelledby="work-label">
+    <div class="doc__side">
+      <h2 class="label" id="work-label"><span class="label__n">01</span>Selected work</h2>
+    </div>
+
+    <div class="doc__main">
+      <article class="case" id="afk" aria-labelledby="afk-title">
+        <header class="case__head reveal">
+          <p class="kicker">Live game · bwush · since March 2026</p>
+          <h3 class="case__title" id="afk-title">AFK for FREE UGC</h3>
+          <p class="case__lede">
+            An AFK game: players earn a point every second and spend points on free UGC items,
+            with boosts, an obby and a slap tool to speed things up. The rewards are real avatar
+            items, so the economy is the thing people try to break, and most of the systems below
+            exist to protect it.
+          </p>
+        </header>
+
+        <div class="case__intro reveal">
+          <figure class="fig fig--art">
+            <a class="shot" href="assets/media/afk-thumbnail.webp">
+              <img src="assets/media/afk-thumbnail.webp" width="768" height="432" loading="lazy" decoding="async"
+                   alt="AFK for FREE UGC thumbnail: a Roblox character running along a pink keyboard obby towards a free UGC hair item.">
+            </a>
+            <figcaption><span class="fig__n">Fig. 1</span> The game's thumbnail on Roblox.</figcaption>
+          </figure>
+
+          <div class="case__facts">
+            <dl class="spec">
+              <div><dt>Role</dt><dd>Lead programmer</dd></div>
+              <div><dt>Group</dt><dd>bwush, ~124k members</dd></div>
+              <div><dt>Visits</dt><dd>1,085,182</dd></div>
+              <div><dt>Favourites</dt><dd>12,988</dd></div>
+              <div><dt>Server size</dt><dd>25 players</dd></div>
+            </dl>
+            <p class="fineprint">Figures from the Roblox API on 15 Oct 2026.</p>
+            <a class="link-out" href="https://www.roblox.com/games/115606322656140" target="_blank" rel="noopener">Play it on Roblox <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <!-- 1.1 has no footage, so it's text with a spec block beside it -->
+        <section class="part part--aside reveal" aria-labelledby="afk-data">
+          <h4 class="part__title" id="afk-data"><span class="part__n">1.1</span>Player data</h4>
+          <div class="part__body">
+            <p>
+              Saves go through ProfileStore with session locking. A player who rejoins quickly or
+              hops servers can't have the same save loaded twice, which is the usual way items get
+              duplicated. Studio sessions write to a separate store, so testing never touches live data.
+            </p>
+            <p>
+              Boosts are saved as an expiry time instead of a countdown. A boost bought before logging
+              off is still correct when the player comes back, and a boost given to someone who's offline
+              is written straight into their save.
+            </p>
+            <p>
+              Roblox disconnects idle players after 20 minutes, which is a problem in a game built around
+              being idle. At 19 minutes the server teleports the player back into the game instead, so the
+              session carries on.
+            </p>
+          </div>
+          <dl class="spec spec--side">
+            <div><dt>Saves</dt><dd>ProfileStore, session-locked</dd></div>
+            <div><dt>Stores</dt><dd>Live and Test kept apart</dd></div>
+            <div><dt>Boosts</dt><dd>Stored as expiry timestamps</dd></div>
+            <div><dt>Idle</dt><dd>Rejoin at 19 min</dd></div>
+          </dl>
+        </section>
+
+        <section class="part part--wide reveal" aria-labelledby="afk-ac">
+          <h4 class="part__title" id="afk-ac"><span class="part__n">1.2</span>Anti-cheat</h4>
+
+          <figure class="fig">
+            <div class="media" data-yt="yzv_yHcfEbU" data-title="Anti-cheat alerts in the bwush Discord">
+              <img src="assets/media/anticheat.webp"
+                   srcset="assets/media/anticheat-640.webp 640w, assets/media/anticheat.webp 1280w"
+                   sizes="(min-width: 1180px) 900px, (min-width: 760px) 70vw, 100vw"
+                   width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Discord channel #anti-cheat showing three REMOTE_VIOLATION_BAN alerts, each for a player calling a honeypot remote.">
+              <a class="media__play" href="https://www.youtube.com/watch?v=yzv_yHcfEbU">Play <span>0:17</span></a>
+            </div>
+            <figcaption><span class="fig__n">Fig. 2</span> The staff #anti-cheat channel: honeypot bans, product-ID warnings and obby timing flags as they come in.</figcaption>
+          </figure>
+
+          <p class="part__lead">
+            Anything that pays out is decided on the server. Exploiters can fire any remote with any
+            arguments, so the client is never asked whether it deserves points.
+          </p>
+          <dl class="notes">
+            <div>
+              <dt>Movement</dt>
+              <dd>
+                Flying and teleport checks don't ban on one bad reading. Each suspicious frame adds to a score
+                that drains over time, so a lag spike or a fling drains away by itself. Only sustained flying
+                climbs through the stages: a warning, then being put back on the ground, then a ban. A first
+                ban lasts a week; a second one is permanent.
+              </dd>
+            </div>
+            <div>
+              <dt>Bait remotes</dt>
+              <dd>
+                Some remotes exist only as bait. They have the kind of names an exploiter goes looking for,
+                no real client ever fires them, and firing one is an instant ban.
+              </dd>
+            </div>
+            <div>
+              <dt>Payouts</dt>
+              <dd>
+                Purchase prompts are checked against the game's own product IDs, and point gains are compared
+                against the amounts the game can actually award. A burst of gains that don't match raises an alert.
+              </dd>
+            </div>
+            <div>
+              <dt>Obby runs</dt>
+              <dd>
+                Runs are timed segment by segment. People are inconsistent; macros aren't. A run where every
+                segment takes almost exactly the same time is flagged with its timing spread attached, so staff
+                review it rather than the script guessing.
+              </dd>
+            </div>
+            <div>
+              <dt>Alts</dt>
+              <dd>Accounts under 90 days old can't join, which shuts out most alt farms.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="part reveal" aria-labelledby="afk-discord">
+          <h4 class="part__title" id="afk-discord"><span class="part__n">1.3</span>Discord commands that reach live servers</h4>
+          <div class="part__body">
+            <p>
+              Staff manage the game from Discord. A slash command goes to the bot, the bot publishes it
+              through Roblox Open Cloud, and every live server is subscribed to that topic, so the command
+              reaches whichever server the player is in. If they aren't in one, their save is opened by key
+              and edited directly. The result comes back to Discord as an embed.
+            </p>
+          </div>
+
+          <ol class="flow">
+            <li><b>Discord</b><span>Staff run /setpoints</span></li>
+            <li><b>Bot</b><span>Node.js, publishes the command</span></li>
+            <li><b>Open Cloud</b><span>Messaging API, one topic</span></li>
+            <li><b>Live servers</b><span>Each checks for the player</span></li>
+            <li><b>Save</b><span>Edited directly if they're offline</span></li>
+            <li><b>Discord</b><span>Result posted back by webhook</span></li>
+          </ol>
+
+          <figure class="fig">
+            <div class="media" data-yt="xjqw6GYNQL0" data-title="Discord commands changing points in the live game">
+              <img src="assets/media/discord-commands.webp"
+                   srcset="assets/media/discord-commands-640.webp 640w, assets/media/discord-commands.webp 1280w"
+                   sizes="(min-width: 1180px) 900px, (min-width: 760px) 70vw, 100vw"
+                   width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Discord slash command menu listing /setgroup set, /setpoints and /settarget from the Darling bot.">
+              <a class="media__play" href="https://www.youtube.com/watch?v=xjqw6GYNQL0">Play <span>2:06</span></a>
+            </div>
+            <figcaption><span class="fig__n">Fig. 3</span> Setting a player's points from Discord, then checking the change in game.</figcaption>
+          </figure>
+        </section>
+
+        <div class="pair">
+          <section class="part part--compact reveal" aria-labelledby="afk-groups">
+            <h4 class="part__title" id="afk-groups"><span class="part__n">1.4</span>Group slots</h4>
+            <figure class="fig">
+              <div class="media" data-yt="QWR_u-OB268" data-title="Group slots managed from Discord">
+                <img src="assets/media/group-slots.webp"
+                     srcset="assets/media/group-slots-640.webp 640w, assets/media/group-slots.webp 1280w"
+                     sizes="(min-width: 1180px) 440px, (min-width: 760px) 35vw, 100vw"
+                     width="1280" height="720" loading="lazy" decoding="async"
+                     alt="Group Slots embed in Discord: three assigned Roblox groups with member counts, an empty fourth slot, and Clear Slot buttons.">
+                <a class="media__play" href="https://www.youtube.com/watch?v=QWR_u-OB268">Play <span>3:46</span></a>
+              </div>
+              <figcaption><span class="fig__n">Fig. 4</span> Assigning a group to a slot, then the in-game prompt.</figcaption>
+            </figure>
+            <p>
+              The game's "Join Group for Perks" prompt is filled from four group slots. Staff assign a group
+              to a slot with /setgroup and clear one with a button. /settarget posts in the channel when a
+              group reaches a member count.
+            </p>
+          </section>
+
+          <section class="part part--compact reveal" aria-labelledby="afk-admin">
+            <h4 class="part__title" id="afk-admin"><span class="part__n">1.5</span>Admin panel</h4>
+            <figure class="fig">
+              <div class="media" data-yt="WKvvy1F2Ns8" data-title="In-game admin panel">
+                <img src="assets/media/admin-panel.webp"
+                     srcset="assets/media/admin-panel-640.webp 640w, assets/media/admin-panel.webp 1280w"
+                     sizes="(min-width: 1180px) 440px, (min-width: 760px) 35vw, 100vw"
+                     width="1280" height="720" loading="lazy" decoding="async"
+                     alt="In-game admin panel with Give Points, Reset Points, Activate Boost, Announce, Give Tool, Slap Immune and View Points controls.">
+                <a class="media__play" href="https://www.youtube.com/watch?v=WKvvy1F2Ns8">Play <span>0:52</span></a>
+              </div>
+              <figcaption><span class="fig__n">Fig. 5</span> The panel in game, logged in as an admin.</figcaption>
+            </figure>
+            <p>
+              Points, boosts, announcements, tools, kicks, bans and teleports, plus a lookup for any player's
+              points by name or UserId. The panel is only UI: each command is checked against the admin list
+              on the server before it runs.
+            </p>
+          </section>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="doc sec" id="other" aria-labelledby="other-label">
+    <div class="doc__side">
+      <h2 class="label" id="other-label"><span class="label__n">02</span>Other work</h2>
+    </div>
+
+    <div class="doc__main">
+      <div class="builds">
+        <article class="build reveal" aria-labelledby="placement-title">
+          <figure class="fig">
+            <div class="media" data-yt="FkIhaNuv-x8" data-title="Placement system demo">
+              <img src="assets/media/placement.webp"
+                   srcset="assets/media/placement-640.webp 640w, assets/media/placement.webp 1280w"
+                   sizes="(min-width: 1180px) 440px, (min-width: 760px) 35vw, 100vw"
+                   width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Green ghost preview of a tent being placed in Roblox Studio, with a hotbar showing Place Tent and Place Bed.">
+              <a class="media__play" href="https://www.youtube.com/watch?v=FkIhaNuv-x8">Play <span>1:07</span></a>
+            </div>
+          </figure>
+          <h3 class="build__title" id="placement-title">Placement system</h3>
+          <p>
+            Building with a ghost preview. The hotbar holds what you own and its count drops as each piece
+            goes down, and a bed can be placed inside a tent that's already been placed. Every placement
+            is checked on the server for ownership and collision before it's saved.
+          </p>
+          <p class="tags">Luau · DataStores</p>
+        </article>
+
+        <article class="build reveal" aria-labelledby="hangar-title">
+          <figure class="fig">
+            <div class="media" data-yt="MPqzKhsSRw4" data-title="Hangar door animation">
+              <img src="assets/media/hangar.webp"
+                   srcset="assets/media/hangar-640.webp 640w, assets/media/hangar.webp 1280w"
+                   sizes="(min-width: 1180px) 440px, (min-width: 760px) 35vw, 100vw"
+                   width="1280" height="720" loading="lazy" decoding="async"
+                   alt="Hangar door partway through opening: the centre section is open and the outer panels are still closed.">
+              <a class="media__play" href="https://www.youtube.com/watch?v=MPqzKhsSRw4">Play <span>0:27</span></a>
+            </div>
+          </figure>
+          <h3 class="build__title" id="hangar-title">Hangar doors</h3>
+          <p>
+            A multi-stage hangar door. Stepping on the pad opens the centre, then the outer panels slide
+            back in sequence. It's animated with CFrame from the server, so everyone sees the doors in the
+            same place at the same time.
+          </p>
+          <p class="tags">Luau · CFrame</p>
+        </article>
+      </div>
+
+      <h3 class="sub reveal">Discord bots</h3>
+      <ul class="bots">
+        <li class="bot reveal">
+          <div class="media media--small" data-yt="I0dr_fkfjWI" data-title="Darling ticket system">
+            <img src="assets/media/tickets-640.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="Ticket Closed embed in #ticket-transcripts with ticket ID, who opened and closed it, open time and reason.">
+            <a class="media__play" href="https://www.youtube.com/watch?v=I0dr_fkfjWI">Play <span>1:25</span></a>
+          </div>
+          <div class="bot__text">
+            <h4>Darling <span>tickets for bwush</span></h4>
+            <p>
+              Each ticket is a private channel with Close, Close with reason and Claim buttons. Closing one
+              posts an HTML transcript to a log channel with who opened, claimed and closed it, and why.
+              It's the same bot that runs the game commands in 1.3.
+            </p>
+          </div>
+        </li>
+        <li class="bot reveal">
+          <div class="media media--small" data-yt="0nAlCeLP-Zg" data-title="Bookworm bot overview">
+            <img src="assets/media/bookworm-640.webp" width="640" height="360" loading="lazy" decoding="async"
+                 alt="A generated library card image with a member's avatar, followed by their reading profile embed.">
+            <a class="media__play" href="https://www.youtube.com/watch?v=0nAlCeLP-Zg">Play <span>3:18</span></a>
+          </div>
+          <div class="bot__text">
+            <h4>Bookworm <span>for a reading server</span></h4>
+            <p>
+              New members get a generated library card with their avatar on it. Members keep a reading
+              profile with a goal, books read, recent and favourite books, and log pages as they go.
+            </p>
+          </div>
+        </li>
+      </ul>
+      <p class="tags">Node.js · TypeScript · Discord API</p>
+    </div>
+  </section>
+
+  <section class="doc sec" id="services" aria-labelledby="services-label">
+    <div class="doc__side">
+      <h2 class="label" id="services-label"><span class="label__n">03</span>What I take on</h2>
+    </div>
+
+    <div class="doc__main">
+      <dl class="rows">
+        <div class="reveal">
+          <dt>Anti-cheat and remote security</dt>
+          <dd>Server-side checks for the exploit you can't get rid of, tuned so laggy players don't get banned.</dd>
+        </div>
+        <div class="reveal">
+          <dt>Data and economies</dt>
+          <dd>Saves, currencies, inventories and shops that don't duplicate items or lose them on a bad shutdown.</dd>
+        </div>
+        <div class="reveal">
+          <dt>Discord and Roblox</dt>
+          <dd>Bots and slash commands that read and change game data, verified account links, and webhook feeds out of the game.</dd>
+        </div>
+        <div class="reveal">
+          <dt>Tools and rescues</dt>
+          <dd>Admin panels, ticket bots and automation, or finishing a backend someone else started.</dd>
+        </div>
+      </dl>
+
+      <p class="process reveal">
+        How it usually goes: you message me with the game and the problem. We agree on what gets built,
+        by when and for how much before I write any code. You get tested code and a walkthrough of how it
+        works, and I'm still around if something comes up afterwards.
+      </p>
+    </div>
+  </section>
+
+  <section class="doc sec" id="about" aria-labelledby="about-label">
+    <div class="doc__side">
+      <h2 class="label" id="about-label"><span class="label__n">04</span>About</h2>
+    </div>
+
+    <div class="doc__main about">
+      <div class="about__text reveal">
+        <p class="about__lead">
+          I started scripting Roblox in 2020 because I wanted to know how games actually worked underneath.
+        </p>
+        <p>
+          Then I got stuck on the parts you can't see: the server, the datastore, the exact moment a rejoin
+          lets someone duplicate an item. That's still the part I like most.
+        </p>
+        <p>
+          In 2023 I started building outside Roblox too: Discord and Telegram bots, Node.js services,
+          external databases, and anything the Roblox APIs let me reach. Most Roblox developers stop at the
+          client and most backend developers have never written Luau, so that overlap is where most of my
+          integration work comes from.
+        </p>
+        <p>
+          These days I'm head developer at bwush and lead programmer on AFK for FREE UGC. I'd rather hand
+          over something I'd put my name on than something fast and quietly broken.
+        </p>
+      </div>
+
+      <dl class="spec about__stack reveal">
+        <div><dt>Roblox</dt><dd>Luau, ProfileStore and DataStores, MessagingService, Open Cloud</dd></div>
+        <div><dt>Elsewhere</dt><dd>TypeScript, Node.js, discord.js, Python, Rust</dd></div>
+        <div><dt>Also</dt><dd>Telegram bots, REST APIs, webhooks, external databases</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="doc sec contact" id="contact" aria-labelledby="contact-title">
+    <div class="doc__side">
+      <p class="label" aria-hidden="true"><span class="label__n">05</span>Contact</p>
+    </div>
+
+    <div class="doc__main">
+      <h2 class="contact__title reveal" id="contact-title">Tell me what's broken, or what you need built.</h2>
       <p class="contact__note reveal">
-        Whether it's an exploiter you can't get rid of, an economy that keeps duping, a
-        Discord integration nobody else will take on, or a whole backend that needs
-        building — tell me about it and I'll say straight away whether I can help.
-        Discord is easiest; I usually reply the same day.
+        Send the game, the problem and roughly when you need it. Discord is quickest. I usually reply
+        the same day.
       </p>
 
-      <div class="contact__links reveal" style="--d:.08s">
-        <button class="copy" type="button" data-copy="definetlyreals">
-          <span class="copy__k">Discord <span class="copy__best">Fastest</span></span>
-          <span class="copy__v">definetlyreals</span>
-          <span class="copy__hint">Click to copy</span>
-        </button>
-        <a class="copy" href="https://github.com/reacuuh" target="_blank" rel="noopener noreferrer">
-          <span class="copy__k">GitHub</span>
-          <span class="copy__v">github.com/reacuuh</span>
-          <span class="copy__hint">Open <span aria-hidden="true">↗</span></span>
-        </a>
-        <button class="copy" type="button" data-copy="farouqadebayo62@gmail.com">
-          <span class="copy__k">Email</span>
-          <span class="copy__v">farouqadebayo62@gmail.com</span>
-          <span class="copy__hint">Click to copy</span>
-        </button>
-        <button class="copy" type="button" data-copy="realswordrod">
-          <span class="copy__k">Roblox</span>
-          <span class="copy__v">realswordrod</span>
-          <span class="copy__hint">Click to copy</span>
-        </button>
-      </div>
+      <ul class="channels reveal">
+        <li class="channel channel--main">
+          <span class="channel__k">Discord</span>
+          <span class="channel__v">definetlyreals</span>
+          <span class="channel__act">
+            <button class="act" type="button" data-copy="definetlyreals">Copy</button>
+            <a class="act" href="https://discord.com/users/725008112486187501" target="_blank" rel="noopener">Open profile <span aria-hidden="true">↗</span></a>
+          </span>
+        </li>
+        <li class="channel">
+          <span class="channel__k">Email</span>
+          <span class="channel__v">farouqadebayo62@gmail.com</span>
+          <span class="channel__act">
+            <button class="act" type="button" data-copy="farouqadebayo62@gmail.com">Copy</button>
+            <a class="act" href="mailto:farouqadebayo62@gmail.com">Write</a>
+          </span>
+        </li>
+        <li class="channel">
+          <span class="channel__k">GitHub</span>
+          <a class="channel__v" href="https://github.com/reacuuh" target="_blank" rel="noopener">reacuuh <span aria-hidden="true">↗</span></a>
+        </li>
+        <li class="channel">
+          <span class="channel__k">Roblox</span>
+          <a class="channel__v" href="https://www.roblox.com/users/1269462849/profile" target="_blank" rel="noopener">realswordrod <span aria-hidden="true">↗</span></a>
+        </li>
+        <li class="channel">
+          <span class="channel__k">YouTube</span>
+          <a class="channel__v" href="https://www.youtube.com/@realswordrod" target="_blank" rel="noopener">@realswordrod <span aria-hidden="true">↗</span></a>
+        </li>
+      </ul>
     </div>
   </section>
+
 </main>
 
 <footer class="foot">
-  <span class="foot__big" aria-hidden="true">LET'S BUILD.</span>
-  <div class="foot__row">
-    <span>© <span id="yr">2026</span> REALS</span>
-    <span>Built from scratch — no template</span>
+  <div class="foot__in">
+    <span>© <span id="yr">2026</span> Reals</span>
+    <span>reals.work</span>
     <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
   </div>
 </footer>
 
+<dialog class="lightbox" aria-label="Image viewer">
+  <form method="dialog"><button class="lightbox__close" type="submit">Close</button></form>
+  <p class="lightbox__cap"></p>
+</dialog>
+
 <div class="toast" role="status" aria-live="polite"></div>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </body>
 </html>
